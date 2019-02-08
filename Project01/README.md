@@ -59,7 +59,7 @@ file1.tmp
 file2.tmp
 Project01/file3.tmp
 temp/file4.tmp
-Are you sure you wan to delete these untracked files? (yes/no)
+Are you sure you want to delete these untracked files? (yes/no)
 
 yes
 

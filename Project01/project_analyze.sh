@@ -8,7 +8,7 @@ else
 	fi
 	for arg in "$@"; do
 		if [ $arg = "TODO" ] ; then
-			grep -rh '#TODO' --exclude=\project_analyze.sh > Project01/todo.log
+			grep -rh '#TODO' --exclude=todo.log > Project01/todo.log
 		elif [ $arg = "mergeMessage" ] ; then
 			git log --oneline | grep -i merge | cut -d' ' -f 2- > Project01/merge/mergeMessage.log
 		elif [ $arg = "mergeFull" ] ; then
