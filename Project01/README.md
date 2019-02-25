@@ -20,7 +20,7 @@ No Inputs! Project01/README.md contains information on how to use each command.
 ```bash
 #file1 contains '#TODO feed dog', file2 contains '#TODO walk dog', dog/file3contains '#TODO buy new dog'
 
-server: ~/CS1XA3/Project01$ ./project_analyze.sh todos
+server: ~/CS1XA3/Project01$ ./project_analyze.sh TODO
 
 #Project01/logs/todo/todo.log will contain three lines:
 	# #TODO feed dog
