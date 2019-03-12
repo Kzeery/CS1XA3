@@ -4,4 +4,4 @@ Webpagecv.html is a HTML file that shows my resume website when opened in a brow
 
 There is not much to be done on the website other than to read what is on it and test some of my projects. The YelpCamp project is deployed online at http://yelpcampyousif.herokuapp.com. If you like, you can go and create a login and post your own campground on the website! The particle fire simulation is  simply a nice simulation to gaze at. The Patatap project makes cool animations and sounds when pressing a keyboard button. Lastly, the To-Do List is just an asthetically pleasing method of listing to-dos. 
 
-The website has already been deployed on http://yousifkzeer.com if you would like to take a look at it without cloning the files from the repo. 
+The website has already been deployed on http://yousifkzeer.ca if you would like to take a look at it without cloning the files from the repo. 
