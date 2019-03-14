@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css"> -->
+</head>
+<body>
+    <div>
+        <form action="/e/kzeery/lab7" method="POST">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="password" name="password" placeholder="Password" class="password" required>
+            <input type="password" name="" placeholder="Re-enter Password" class="password" id="reenter" required>
+            <button>Submit!</button>
+        </form>
+        <div style="color: green;" id="ok">OK</div>
+    </div>
+    <div><%=rightPassword %></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>
