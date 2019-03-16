@@ -1,0 +1,36 @@
+body {
+    text-align: center;
+}
+.custom-container  {
+    display: inline-block;
+    margin-top: 20%;
+    height: 770px;
+    width: 720px;
+    overflow: hidden;
+    background:gray;
+    
+}
+#game {
+    margin-top: 45%;
+}
+#tab {
+    margin-top: 0;
+    border: 2px solid black;
+    height: 50px;
+
+}
+
+#play {
+    width: 720px;
+    height: 720px !important;
+}
+
+
+.circle {
+    display: block;
+    background: black;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    position: absolute;
+}
