@@ -1,7 +1,6 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var cors = require("cors");
-var exec = require("child_process").exec;
 
 var app = express();
 app.set("view engine", "ejs");
