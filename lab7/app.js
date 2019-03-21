@@ -14,16 +14,11 @@ app.get("/e/kzeery", function(req, res) {
 });
 
 app.post("/e/kzeery/lab7", function(req, res) {
-	if(req.body.name === "Jimmy" && req.body.password === "Hendrix") {
-		exec("cp views/lab7cool.html ../public_html/lab7.html");
-		res.redirect("https://mac1xa3.ca/u/kzeery/lab7.html");
+	if(req.body.name == "Jimmy" && req.body.password == "Hendrix") {
+		res.send("Cool");
 	} else {
-		exec("cp views/lab7bad.html ../public_html/lab7.html")
-		res.redirect("https://mac1xa3.ca/u/kzeery/lab7.html");
+		res.send("Bad User Name");
 	}
-	setTimeout(function() {
-		exec("cp views/lab7.html ../public_html/lab7.html");
-	}, 50);
 });
 
 app.listen(10033, function() {

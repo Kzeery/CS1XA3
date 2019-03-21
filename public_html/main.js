@@ -10,8 +10,14 @@ $(function() {
             $("button").removeAttr("disabled");
             
         }
-    
         
+    });
+    $(document).on('submit', '#myForm', function(e) {
+        $.post('https://mac1xa3.ca/e/kzeery/lab7', $("#myForm").serialize(), function(result) {
+            $("#response").text(result);
+        });
+        $("input").val("");
+        e.preventDefault();
     });
 });
 
