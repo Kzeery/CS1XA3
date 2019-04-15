@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Index Page!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/scripts/index.js"></script>
+</head>
+<body>
+    <% include partials/nav %>
+    <div class="container mt-2">
+        <div class="custom-container2 mt-0">
+            <h3>
+                <%= user.username %> &emsp;<% if(!isFriend && currentUser && currentUser.id != user._id) { %> 
+                <button class="btn btn-success btn-sm" id="addfriend" username="<%=user.username%>">Add Friend</button>
+                <% } %>
+            </h3>
+            <h5>Games Played: <span class="games"><%= user.wins + user.losses %></span></h5>
+            <h5>Wins: <span class="wins"><%= user.wins %></span> Losses: <span class="losses"><%= user.losses %></span></h5>
+        </div>
+    </div>
+    <div class="container text-center mt-4">
+        <ul class="list-group ">
+            <% user.matches.reverse().forEach(function(match) { %>
+                <li class="list-group-item2 mt-2 <% if(match.winner == user.username) { %>victory-bg <% } else { %>defeat-bg<% }%>">
+                    <p class="text-right"><%= match.date %></p>
+                    <h1>
+                        <% if(match.winner == user.username) { %> 
+                            Victory!
+                        <% } else  { %> 
+                            Defeat!
+                        <% }%>
+                    </h1>
+                    <h2><%= match.winner %> vs. <%= match.loser %></h2>
+                    <div class="row ">
+                        <div class="col-sm-6 text-left">
+                            <h4>Score: <%= match.score %></h4> 
+                        </div>
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-3 text-right">
+                            <h4>Length: <%= match.length %></h4>
+                        </div>
+                    </div>
+                </li>
+            <% }); %>
+        </ul>
+        
+    </div>
+    <% include partials/footer %>
