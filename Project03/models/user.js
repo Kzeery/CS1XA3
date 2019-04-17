@@ -11,15 +11,9 @@ var userSchema = new mongoose.Schema({
     friendinvites: [{
         id: String,
         username: String
-    }],
-    matches: [{
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: 'Match'
-    }],
-    losses: {type: Number, default: 0},
-    wins: {type: Number, default: 0}
+    }]
 });
 
 userSchema.plugin(passportLocalMongoose);
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("User", userSchema, "users");
