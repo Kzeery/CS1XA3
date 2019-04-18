@@ -102,20 +102,15 @@ function socketListener(url, io) {
                                     user.matches.push(match._id);
                                     user.save();
                                 }
-                            }).then(function() {
-                                if(match.loser && match.winner) {
-                                    if(!saved) {
-                                        match.save();
-                                        saved = true;
-                                    }
-                                    
-                                }
                             });
+                            setTimeout(function() {
+                                match.save();
+                                listener.removeAllListeners();
+                            }, 5000);
                         }
                     }
                 }
             }
-            listener.removeAllListeners();
         });
         socket.on("win", function() {
             players[socket.id].win = true;
@@ -142,17 +137,12 @@ function socketListener(url, io) {
                         user.matches.push(match._id);
                         user.save();
                     }
-                }).then(function() {
-                    if(match.loser && match.winner) {
-                        if(!saved) {
-                            match.save();
-                            saved = true;
-                        }
-                        
-                    }
                 });
+                setTimeout(function() {
+                    match.save();
+                    listener.removeAllListeners();
+                }, 5000)
             }
-            listener.removeAllListeners();
         });
     
     });
