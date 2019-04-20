@@ -1,9 +1,13 @@
+html, body {
+    min-height: 100%;
+}
 body {
     background-image: url("../background/background.jpg");
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 .custom-container {
     background-color: #fff;
@@ -15,6 +19,7 @@ body {
     width: 90%;
     max-width: 500px;
     text-align: center;
+    padding-bottom: 10px;
 }
 .custom-container3 {
     background-color: #fff;
@@ -55,6 +60,7 @@ body {
 }
 .notifications {
     width: 15%;
+    min-width: 150px;
     position: fixed;
     bottom: 2%;
     right: 2%;
