@@ -11,7 +11,7 @@ window.addEventListener("beforeunload", listenerfunction);
 
 $(function() {
     // Connect to the socket listener of the current url
-    var socket = io.connect(window.location.href);
+    var socket = io.connect(window.location.href, { path: "/e/kzeery/socket.io"});
     socket.on("connect", function() {
         // Making sure the person connected is logged in, and sending the mongoDB _id to the server
         if($("#userid").length) {
@@ -23,7 +23,7 @@ $(function() {
     // If the game is full, that likely means that the user should not be joining. Remove all the listeners and replace the html with an error message
     socket.on("fullgame", function() {
         socket.removeAllListeners();
-        return $("body").html('<div class="container mt-5"><div><h1>This is not your game. You cannot join it. </h1></div><div><a class="btn btn-danger" href="/">Back</a></div>');
+        return $("body").html('<div class="container mt-5"><div><h1>This is not your game. You cannot join it. </h1></div><div><a class="btn btn-danger" href="/e/kzeery">Back</a></div>');
     });
 
     // Function for drawing a card on the screen using the url of the card for the background image;
@@ -346,9 +346,9 @@ $(function() {
         window.removeEventListener("beforeunload", listenerfunction);
         // Show win message if the user won, and lose message if the user lost.
         if(players[socket.id].win) {
-            $("body").append('<div class="gameover"><h1 class="mt-5">You won!</h1><h3 class="mt-5">Good job, your mom must be proud!</h3><h3 class="mt-3">To go back to the home page, click the button below.</h3><a href="/" class="btn btn-success mt-5">Click Here to go Home</a></div>');
+            $("body").append('<div class="gameover"><h1 class="mt-5">You won!</h1><h3 class="mt-5">Good job, your mom must be proud!</h3><h3 class="mt-3">To go back to the home page, click the button below.</h3><a href="/e/kzeery" class="btn btn-success mt-5">Click Here to go Home</a></div>');
         } else {
-            $("body").append('<div class="gameover"><h1 class="mt-5">You lost!</h1><h3 class="mt-5">Too bad, better luck next time!</h3><h3 class="mt-3">To go back to the home page, click the button below.</h3><a href="/" class="btn btn-success mt-5">Click Here to go Home</a></div>');
+            $("body").append('<div class="gameover"><h1 class="mt-5">You lost!</h1><h3 class="mt-5">Too bad, better luck next time!</h3><h3 class="mt-3">To go back to the home page, click the button below.</h3><a href="/e/kzeery" class="btn btn-success mt-5">Click Here to go Home</a></div>');
         }
     });
 });

@@ -16,7 +16,7 @@ $(function() {
     }
 
     // Connecting to the main page socket listener
-    var socket = io("/");
+    var socket = io.connect("/", { path: "/e/kzeery/socket.io"});
     // If the user is logged in, tell the server the mongo _id and emit "newsocket"
     socket.on("connect", function() {
         if($("#userid").length) {
@@ -27,7 +27,7 @@ $(function() {
 
     // If the user is already online, replace the entire page with an error message. Remove all their listeners.
     socket.on("alreadyonline", function() {
-        $("body").html('<div class="container mt-5"><div><h1>You are already logged in somewhere else! You can only be logged in at one location at a time.</h1></div><div><a class="btn btn-danger" href="/logout">Logout</a></div>');
+        $("body").html('<div class="container mt-5"><div><h1>You are already logged in somewhere else! You can only be logged in at one location at a time.</h1></div><div><a class="btn btn-danger" href="/e/kzeery/logout">Logout</a></div>');
         socket.removeAllListeners();
     });
 
@@ -73,7 +73,7 @@ $(function() {
         if(result.success) {
             // Add the new friend to the list of friends
             alertResult(".friend-invites", "success", result);
-            var str = '<div class="dropdown-container"><div class="dropdown-item"><a class="hovering" friendId="'+ result.friend.id + '">'+ result.friend.username + '</a><div class="hide invbutton mt-2"><a class="btn btn-success invitefriend">Invite</a></div><div class="hide buttons mt-2"><a class="btn btn-info" href="/matches/'+ result.friend.id + '">Match History</a></div><div class="hide buttons mt-2"><a class="btn btn-danger removefriend" friendId="' + result.friend.id + '">Remove Friend</a></div></div><div class="dropdown-divider"></div></div>'
+            var str = '<div class="dropdown-container"><div class="dropdown-item"><a class="hovering" friendId="'+ result.friend.id + '">'+ result.friend.username + '</a><div class="hide invbutton mt-2"><a class="btn btn-success invitefriend">Invite</a></div><div class="hide buttons mt-2"><a class="btn btn-info" href="/e/kzeery/matches/'+ result.friend.id + '">Match History</a></div><div class="hide buttons mt-2"><a class="btn btn-danger removefriend" friendId="' + result.friend.id + '">Remove Friend</a></div></div><div class="dropdown-divider"></div></div>'
             $(".friends").append(str);
         } else {
             alertResult(".friend-invites", "danger", result);
@@ -92,7 +92,7 @@ $(function() {
     // Notify a user in real time that someone has accepted a friend request.
     socket.on("acceptedrequest", function(username, id) {
         notify(username + " has accepted your friend request!");
-        var str = '<div class="dropdown-container"><div class="dropdown-item"><a class="hovering" friendId="'+ id + '">'+ username + '</a><div class="hide invbutton mt-2"><a class="btn btn-success invitefriend">Invite</a></div><div class="hide buttons mt-2"><a class="btn btn-info" href="/matches/'+ id + '">Match History</a></div><div class="hide buttons mt-2"><a class="btn btn-danger removefriend" friendId="' + id + '">Remove Friend</a></div></div><div class="dropdown-divider"></div></div>'
+        var str = '<div class="dropdown-container"><div class="dropdown-item"><a class="hovering" friendId="'+ id + '">'+ username + '</a><div class="hide invbutton mt-2"><a class="btn btn-success invitefriend">Invite</a></div><div class="hide buttons mt-2"><a class="btn btn-info" href="/e/kzeery/matches/'+ id + '">Match History</a></div><div class="hide buttons mt-2"><a class="btn btn-danger removefriend" friendId="' + id + '">Remove Friend</a></div></div><div class="dropdown-divider"></div></div>'
         // Add thew new friends to their list of friends
         $(".friends").append(str);
         $("#addfriend").remove(); 
@@ -148,7 +148,7 @@ $(function() {
 
     // Redirecting users to the game page.
     socket.on("redirectgame", function(url) {
-        window.location.href = url;
+        window.location.href = "/e/kzeery" + url;
     });
 
     // When you click the accept button for a game invite, tell the server you did with the url and the friend's mongoDB _id
@@ -183,10 +183,10 @@ $(function() {
         $(".friend-invites-length").text($(".invite").length / 2);
         if($(this).hasClass("btn-success")) {
             // If you click yes, send "acceptrequest" message
-            socket.emit("acceptrequest", $(this).attr("friendId"));
+            socket.emit("acceptrequest", $(this).attr("friend"));
         } else {
             // Otherwise emit "declinerequest" message
-            socket.emit("declinerequest",  $(this).attr("friendId"));
+            socket.emit("declinerequest",  $(this).attr("friend"));
         }
         e.stopPropagation();
     });

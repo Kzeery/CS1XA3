@@ -8,7 +8,7 @@ convertToTime         = require("./date"); // For converting miliseconds to hour
 // This is the socket listener for the game. Only users who are in a game will connect to this socket listener
 function socketListener(url, io) {
     // There are more than one socket listener for these games. Each time a user connects to a game, a new socket listener for that game in the namespace of that url created.
-    var listener = io.of(url);
+    var listener = io.of("/e/kzeery" + url);
     // The players object will have all of the user's information such as their hand, their goal deck, and their discard piles.
     var players = { "length": 0, "play": { "1": [], "2": [], "3": [], "4": [] } };
     // Creating arrays holding the mongoDB userIds of the players and the socket.ids of the players 
