@@ -84,5 +84,5 @@ app.get("/*", function(req, res) {
 });
 // Starting the server
 server.listen(process.env.PORT, process.env.IP, function() {
-    console.log("server has started!");
+    console.log("Server has started! Go to https://mac1xa3.ca/e/kzeery to view the app!");
 });

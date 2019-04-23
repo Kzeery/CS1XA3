@@ -3,9 +3,43 @@
 ## For CS1XA3 Server
 ### How to run the project on the server
 To run the project on the server, simply go over to the Project03 directory and type in "node app.js" and the server will start. You can then head over to http://mac1xa3.ca/e/kzeery to visit the index page.
+### How to test the functionality of the project
+#### YouTube Video
+I've created a YouTube of me going over all of the key functionality of the app. It shows me starting the server, creating accounts, signing in, adding friends, and playing the game. You can watch the video here: https://youtu.be/i8rAjVyJ9es
+
+All of the features I have showcased in the video are explained below in this section.
+
+#### Connections
+To test the functionality of the project, you will want two different connections. Using two different browsers will do the trick (browsers save session info so if you try it on a different tab it will not work). I usually use Chrome and Firefox.
+
+#### Signing up/logging in
+Firstly, start by making two different accounts by clicking sign up on the navbar (for example's sake, we'll say their usernames are Foo and Bar). This will create and store two different accounts in the database. You can test this by logging out and trying to log back in with different credentials which will not work. You can try signing up with the same username and that also will not work (note that you cannot be signed in at two different locations on the same user at once. Doing so will prompt an error message).
+
+#### Adding a friend
+Once you have made both accounts, you will want to use Foo to add Bar to the friends list. Click on find friend in the navbar and type in Bar (case sensitive). If done correctly, Bar will receive a real-time notification that they received a friend request. If Bar accepts the friend request (under pending friend requests), both users' friends lists will be updated in real time.
+
+#### Online updates
+You will notice that in Foo's friends list, Bar's name is highlighted in green. This is to indicate that Bar is currently online. Try logging off or exiting the app on Bar and Foo's friend list will now show Bar's name in black. If Bar signs back in, Foo's friend list will be updated to show the name in green. Also, when hovering over a friend's username, it will only show the "Invite" button if the friend is online. If not, it will only show "Remove friend", and "Match History".
+
+#### Accessing the game
+If you are signed in on both Foo and Bar, you can use Foo to invite Bar to a game of cards by hovering over their name in the friends list and clicking "Invite". Bar will recieve a real-time notification indicating that Foo has invited them to a game of cards. Accepting the game invite will redirect both users to the game page. You can try accessing that game page with another user or after the game has started and you will notice that it does not work.
+
+#### Playing the game
+Playing the game is complex and documented under "/howtoplay". But for the sake of testing, you can test the real-time updates in the game. On game start, one user will get the notification that it is their turn. Each user can see the cards in their hand, but not the cards in their opponent's hand (Your hand is the leftmost 5 cards at the very bottom and your opponent's hand are the leftmost 5 cards at the top). You can test who's turn it is as well by clicking on a card in the bottom (your hand). If the card is outlined in green, then it is that user's turn. 
+
+If it is Foo's turn for example, you can test the real-time updates by playing a card in your discard pile. Select any card from your hand (not the rightmost one because that is your goal pile) and it will be outlined in green. Play it in one of the empty slots directly above your hand. Foo will notice that their card was removed from their hand and placed in the discard pile. Bar will immediately notice that Foo's hand has one less card, and Foo's discard pile (second from the top) has a new card in it which is the same card that Bar played. 
+
+Foo will notice that an "End turn" button has appeared at the bottom. When clicked, Foo's turn will end, they cannot click any cards, Bar will be notified that it is their turn, and Bar will now be able to play cards.
+
+#### Winning
+Leave the game with either Foo or Bar. The other will be notified that they have won and will be prompted to redirect home.
+
+#### Match history
+Click on "Signed in as ___" with either Foo or Bar. You will notice that their match history has been updated to show how many wins they have, how many losses they have, the amount of games they have played, as well as some details about each match they have played.
+
 ## To view the app online
 ### How to find the app online
-To see the app online, simply go to http://www.multicards.tk. It has the exact same functionality as the CS1XA3 server version.
+To see the app online, simply go to https://www.multicards.tk. It has the exact same functionality as the CS1XA3 server version.
 
 ## Basic Features
 ### User Creation
